@@ -12,12 +12,12 @@ _start:
 ; sum all values
 mov rax, 0                     ; result
 mov rcx, [n_values]            ; counter (decremental)
-mov rdx, values                ; iterator
+mov rsi, 0                     ; iterator
 sumStep:
-add rax, qword [rdx]           ; add element at iterator
-add rdx, 8                     ; next item
+add rax, qword [values+rsi*8]  ; add element at iterator
+inc rsi                        ; next item
 loop sumStep
-mov [result], qword rax
+mov [result], qword rax        ; store result
 
 ; exit with success
 exit:
