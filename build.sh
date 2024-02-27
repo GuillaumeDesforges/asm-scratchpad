@@ -74,5 +74,5 @@ if [[ "$IS_RUN" == 1 ]]; then
   runCmd "./dist/$FILE"
 fi
 if [[ "$IS_GDB" == 1 ]]; then
-  runCmd cd ./dist && gdb "$FILE" -iex 'layout src' -ex 'starti'
+  runCmd cd ./dist && gdb "$FILE" -tui -ex 'starti'
 fi
