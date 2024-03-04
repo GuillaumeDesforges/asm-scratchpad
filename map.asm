@@ -43,7 +43,11 @@ iterLoop:
   mov rdx, 8
   mul rdx
   add rsi, rax
-  call int_double
+  ; do a little trick: store which function to use in rax
+  ; so that technically this could call any function on this item
+  ; like map should
+  mov rax, int_double
+  call rax
   pop rsi ; recover iterator
   inc rsi ; iterate
   loop iterLoop
